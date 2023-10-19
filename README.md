@@ -1,5 +1,5 @@
 # ShooterRaycast
-ShooterRaycast
+Aplicación de principios y arquitecturas de sistemas hipermedia
 Link explicación: https://youtu.be/uPaZ851KQJ4
 Descripción
 ShooterRaycast es un proyecto de Unity que te permite controlar un arma de rayos láser en un juego. Dispara a los objetos adecuados y alcanza la condición de victoria.
