@@ -97,7 +97,7 @@ public class RaycastGun : MonoBehaviour
                 textoContador = "Cubos destruidos: " + cubosDestruidos + "\nEsferas destruidas: " + esferasDestruidas;
                 contadorTexto.text = textoContador;
 
-                if (cubosDestruidos >= 3 && esferasDestruidas >= 2)
+                if (cubosDestruidos >= 15 && esferasDestruidas >= 10)
                 {
                     // Muestra un mensaje de victoria y finaliza el juego
                     textoVictoria.gameObject.SetActive(true);
