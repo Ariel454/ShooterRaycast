@@ -10,6 +10,8 @@ public class RaycastGun : MonoBehaviour
     public Camera playerCamera;
     public Transform laserOrigin;
     public TMPro.TextMeshProUGUI contadorTexto;
+    public TMPro.TextMeshProUGUI textoVictoria;
+    public Generador generador;
     public float gunRange = 50f;
     public float fireRate = 0.2f;
     public float laserDuration = 0.05f;
@@ -18,6 +20,9 @@ public class RaycastGun : MonoBehaviour
     private int esferasDestruidas = 0;
     private string textoContador;
 
+    private bool juegoTerminado = false;
+    public FirstPersonMovement firstPersonController;
+    public FirstPersonLook firstPersonLook;
 
     LineRenderer laserLine;
     float fireTimer;
@@ -27,6 +32,14 @@ public class RaycastGun : MonoBehaviour
         laserLine = GetComponent<LineRenderer>();
     }
  
+    void DetenerJuego()
+    {
+        Time.timeScale = 0;
+        firstPersonController.juegoPausado = true; 
+        firstPersonLook.juegoPausado = true;
+    }
+
+
     void Update()
     {
         fireTimer += Time.deltaTime;
@@ -51,9 +64,12 @@ public class RaycastGun : MonoBehaviour
                     shotsHit++;
                     if (shotsHit >= 2)
                     {
-                        Destroy(hit.transform.gameObject);
+                    Destroy(hit.transform.gameObject);
                         shotsHit = 0;
                             cubosDestruidos++;
+
+                            
+                        generador.GenerarObjeto("Cubo");
                     }
                 }
                 else if (hit.transform.CompareTag("Esfera"))
@@ -65,6 +81,7 @@ public class RaycastGun : MonoBehaviour
                         Destroy(hit.transform.gameObject);
                         shotsHit = 0;
                             esferasDestruidas++;
+                        generador.GenerarObjeto("Esfera");
                     }
                 }
                 else
@@ -79,6 +96,19 @@ public class RaycastGun : MonoBehaviour
                 }
                 textoContador = "Cubos destruidos: " + cubosDestruidos + "\nEsferas destruidas: " + esferasDestruidas;
                 contadorTexto.text = textoContador;
+
+                if (cubosDestruidos >= 3 && esferasDestruidas >= 2)
+                {
+                    // Muestra un mensaje de victoria y finaliza el juego
+                    textoVictoria.gameObject.SetActive(true);
+                    textoVictoria.text = "¡Ganaste!";
+                    juegoTerminado = true;
+                    // Asegúrate de detener la lógica del juego si es necesario.
+                    DetenerJuego();
+                    return;
+                }
+
+
             }
             else
             {
