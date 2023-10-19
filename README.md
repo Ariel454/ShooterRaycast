@@ -5,28 +5,36 @@ ShooterRaycast es un proyecto de Unity que te permite controlar un arma de rayos
 
 Requisitos
 Unity 2022.3.10 o posterior
+
 Configuración del Entorno
 Paso 1: Terreno y Assets
 Descarga el proyecto y ábrelo en Unity.
 Configura un terreno en tu escena.
+
 Paso 2: Arma y Personaje
 Importa el "First Person Controller" y el modelo del arma como assets.
 Coloca el arma dentro del objeto "Main Camera" del "First Person Controller".
+
 Paso 3: Puntero
 Crea un objeto vacío como el origen del láser y colócalo en la boca del arma.
 En el Canvas, crea una imagen que servirá como puntero y configura su altura, ancho y apariencia.
+
 Paso 4: Canvas
 En el Canvas, establece la escala de la interfaz de usuario en "Scale with Screen Size".
+
 Paso 5: Line Renderer
 Elimina el collider del arma y agrega un componente "Line Renderer".
 Configura el material del Line Renderer y ajusta el color del láser.
 Cambia el ancho del láser a 0.1 y la posición Z a 0.
+
 Paso 6: Configuración del Script
 Agrega el script "RaycastGun" al arma.
 Etiquetas y Texturas
 Define etiquetas ("Cubo", "Esfera", etc.) para los objetos que quieras destruir.
 Asigna las etiquetas correspondientes a los objetos en tu escena.
+
 Contador
+
 Agrega un contador de puntuación en el Canvas.
 Asegúrate de que el contador esté en la esquina superior derecha de la pantalla.
 Funcionalidad del Juego
